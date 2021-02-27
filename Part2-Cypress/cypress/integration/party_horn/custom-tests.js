@@ -78,9 +78,9 @@ describe('Party Horn Tests', () => {
 
   it('Test if error is shown when textbox number is out of range', () => {
     cy.get("#volume-number").clear().type('101')
-    cy.get('#honk-btn').then($el => {
-      expect($el).to.have.attr('disabled');
-    });
+    cy.get("#volume-number:invalid").should("exist")
+    cy.get("#volume-number").clear().type('100')
+    cy.get("#volume-number:invalid").should("not.exist")
   });
 
 });
